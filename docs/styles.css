@@ -117,13 +117,6 @@ a:focus-visible, button:focus-visible {
   transition: background .2s, box-shadow .2s;
 }
 
-.pill-light {
-  justify-self: end;
-  background: #f8f7f3;
-  color: #121416;
-}
-
-.pill-light:hover { background: #fff; box-shadow: 0 0 20px #fff4; }
 .pill-accent { background: #ed9b68; color: #211008; }
 .pill-accent:hover { background: #ffb986; box-shadow: 0 0 24px #ffb9863b; }
 
@@ -222,7 +215,7 @@ a:focus-visible, button:focus-visible {
 .hero-title span {
   display: block;
   margin-top: .06em;
-  font-size: .83em;
+  font-size: .7em;
   line-height: .93;
 }
 
@@ -234,7 +227,8 @@ a:focus-visible, button:focus-visible {
   padding: 28px var(--gutter) clamp(28px, 6.2vh, 72px);
 }
 
-.hero-bio, .hero-reading {
+.hero-reading {
+  grid-column: 3;
   max-width: 245px;
   color: #f1f2f2;
   font-size: .9375rem;
@@ -242,11 +236,11 @@ a:focus-visible, button:focus-visible {
   text-shadow: 0 1px 10px #000, 0 1px 16px #000;
 }
 
-.hero-bio p, .hero-reading p { margin: 0; }
+.hero-reading p { margin: 0; }
 .hero-reading { justify-self: end; padding-bottom: clamp(10px, 4.6vh, 48px); }
 .hero-reading .pill { margin-top: 14px; pointer-events: auto; text-shadow: none; }
 
-.hero-controls { justify-self: center; text-align: center; }
+.hero-controls { grid-column: 2; justify-self: center; text-align: center; }
 
 .phase-control {
   display: inline-flex;
@@ -434,12 +428,12 @@ a:focus-visible, button:focus-visible {
   .pill { min-height: 42px; }
   .exhibit { min-height: max(630px, 100svh); }
   .hero-title { font-size: clamp(3.5rem, 13vw, 5.5rem); margin-top: clamp(38px, 7.5vh, 80px); }
-  .hero-bottom { grid-template-columns: minmax(0, 1fr) auto; gap: 18px 12px; }
+  .hero-title span { font-size: clamp(1.5rem, 7.65vw, 2.8rem); }
+  .hero-bottom { grid-template-columns: 1fr auto; gap: 16px; }
   .hero-controls { grid-column: 1 / -1; grid-row: 2; }
-  .hero-reading { padding: 0; }
+  .hero-reading { grid-column: 2; padding: 0; }
   .hero-reading p { display: none; }
   .hero-reading .pill { margin: 0; }
-  .hero-bio { font-size: .875rem; line-height: 1.55; }
   .shade {
     background:
       linear-gradient(180deg, #020407ac 0%, #0204079e 28%, transparent 58%),

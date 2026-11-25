@@ -15,9 +15,9 @@ const github = "https://github.com/yih1827686127";
 const description = "黄怿（Yi Huang，Lexury）的个人博客，记录波浪能、流体力学与人工智能的研究问题、论文阅读与项目进展。";
 const nav = [
   ["主页", ""],
-  ["归档", "archive/"],
-  ["关于", "about/"],
-  ["学术履历 / CV", "cv/"],
+  ["博客", "archive/"],
+  ["合作", "cooperation/"],
+  ["学术履历", "cv/"],
 ];
 
 const md = new MarkdownIt();
@@ -50,7 +50,6 @@ function header(base, active) {
       <nav class="site-nav" aria-label="主导航">
         ${links}
       </nav>
-      <a class="pill pill-light" href="${github}" lang="en">GitHub</a>
     </header>`;
 }
 
@@ -154,7 +153,6 @@ await Promise.all([
 const home = homeTemplate.replace("{{navigation}}", () => header("./", ""))
   .replace("{{latest}}", () => postList(posts.slice(0, 3), "./"));
 
-const aboutHeading = about.match(/^# (.+)\r?$/m)?.[1].trim() ?? "关于";
 const aboutBody = about.replace(/^# .+\r?\n/, "").trim();
 
 await Promise.all([
@@ -167,14 +165,19 @@ await Promise.all([
   writePage("archive", readingPage({
     base: "../",
     active: "archive/",
-    heading: "归档",
+    heading: "博客",
     body: postList(posts, "../"),
   })),
-  writePage("about", readingPage({
+  writePage("cooperation", readingPage({
     base: "../",
-    active: "about/",
-    heading: aboutHeading,
-    body: `<article class="prose">${md.render(aboutBody, { base: "../" })}</article>`,
+    active: "cooperation/",
+    heading: "合作",
+    body: `<article class="prose">
+      ${md.render(aboutBody, { base: "../" })}
+      <h2>欢迎交流</h2>
+      <p>如果你也在做波浪能、流体力学或人工智能相关研究，欢迎交流研究问题、方法和项目想法。</p>
+      <p><a href="${github}">查看我的 GitHub 项目</a></p>
+    </article>`,
   })),
   writePage("cv", readingPage({
     base: "../",
