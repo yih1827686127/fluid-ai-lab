@@ -216,6 +216,7 @@ a:focus-visible, button:focus-visible {
   display: block;
   margin-top: .06em;
   font-size: .7em;
+  letter-spacing: -.055em;
   line-height: .93;
 }
 
